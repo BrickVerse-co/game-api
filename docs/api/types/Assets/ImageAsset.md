@@ -1,0 +1,13 @@
+---
+title: "ImageAsset"
+category: "Assets"
+generated: true
+---
+
+# ImageAsset
+
+**Inherits:** `ResourceAsset`
+
+**Kind:** Abstract
+
+> Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/ImageAsset?filename=overview.md).
