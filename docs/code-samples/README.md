@@ -1,10 +1,13 @@
-# Contributing Luau samples
+# BrickVerse Luau code samples
 
-Place runnable `.luau` files under:
+Runnable examples are grouped by API class and member so the documentation generator can insert each sample beside the matching reference entry.
 
-- `classes/<Class>/overview/`
-- `classes/<Class>/methods/<Method>/`
-- `classes/<Class>/properties/<Property>/`
-- `classes/<Class>/events/<Event>/`
+Most examples assume they run from a `ServerScript`. Client-only examples say so in a leading comment.
 
-The filename becomes the example heading. Samples are inserted beside the matching API member and survive regeneration.
+## Included coverage
+
+- Creating, naming, cloning, parenting, and destroying instances
+- Traversing children, descendants, and ancestors
+- Attributes, tags, class checks, and change signals
+- Looking up engine services and reading world/server metadata
+- Frame callbacks and network-object lookup
