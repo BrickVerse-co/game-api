@@ -22,6 +22,14 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/properties?filename=IsLocalTest.md).
 
+#### Developmentonlylogging
+
+```luau
+if World.IsLocalTest then
+	print("Development diagnostics are enabled")
+end
+```
+
 ### IsLegacyWorld
 
 **Type:** `boolean`
@@ -37,6 +45,13 @@ generated: true
 **Read-only**
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/properties?filename=WorldID.md).
+
+#### Printworldidentity
+
+```luau
+print("World:", World.WorldName, World.WorldID)
+print("Universe:", World.UniverseName, World.UniverseID)
+```
 
 ### UniverseID
 
@@ -94,6 +109,18 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/properties?filename=ServerTime.md).
 
+#### Synchronizedclock
+
+```luau
+local roundStartedAt = World.ServerTime
+
+local function getElapsedRoundTime()
+	return World.ServerTime - roundStartedAt
+end
+
+print("Elapsed:", getElapsedRoundTime())
+```
+
 ### PlayersConnected
 
 > **Deprecated:** This API is retained for compatibility and should not be used in new code.
@@ -136,11 +163,29 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/methods?filename=GetNetworkedObject.md).
 
+#### Resolvenetworkid
+
+```luau
+local networkID = "replace-with-a-network-object-id"
+local object = World:GetNetworkedObject(networkID)
+
+if object ~= nil then
+	print(object.Name, object.ClassName)
+end
+```
+
 ### GetFPS()
 
 **Returns:** `number`
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/methods?filename=GetFPS.md).
+
+#### Readengineframerate
+
+```luau
+local fps = World:GetFPS()
+print(string.format("Engine FPS: %.1f", fps))
+```
 
 ### GetService(className)
 
@@ -152,6 +197,16 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/methods?filename=GetService.md).
 
+#### Getplayersservice
+
+```luau
+local Players = World:GetService("Players")
+
+for _, player in Players:GetChildren() do
+	print(player.Name)
+end
+```
+
 ### FindService(className)
 
 #### Parameters
@@ -161,6 +216,18 @@ generated: true
 **Returns:** `Instance`
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/methods?filename=FindService.md).
+
+#### Optionalservice
+
+```luau
+local StudioService = World:FindService("StudioService")
+if StudioService == nil then
+	print("StudioService is unavailable in this environment")
+	return
+end
+
+print("Running with StudioService")
+```
 
 ## Events
 
@@ -173,3 +240,14 @@ generated: true
 - `number`: `number`
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/World/events?filename=Rendered.md).
+
+#### Framecallback
+
+```luau
+-- Client script: Rendered fires after each rendered frame.
+World.Rendered:Connect(function(deltaTime)
+	-- Keep render callbacks lightweight.
+	local currentFPS = 1 / math.max(deltaTime, 0.0001)
+	print("Frame FPS:", math.floor(currentFPS))
+end)
+```

@@ -70,6 +70,16 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/NetworkedObject/methods?filename=GetPropertyChangedSignal.md).
 
+#### Watchname
+
+```luau
+local arena = World:WaitForChild("Arena")
+
+arena:GetPropertyChangedSignal("Name"):Connect(function()
+	print("Arena renamed to", arena.Name)
+end)
+```
+
 ### IsA(className)
 
 #### Parameters
@@ -79,6 +89,15 @@ generated: true
 **Returns:** `boolean`
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/NetworkedObject/methods?filename=IsA.md).
+
+#### Safeclasscheck
+
+```luau
+local object = World:FindFirstChild("Spawn", true)
+if object ~= nil and object:IsA("SpawnLocation") then
+	print("Spawn location ready:", object:GetFullName())
+end
+```
 
 ### Clone(parent?)
 
@@ -90,6 +109,22 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/NetworkedObject/methods?filename=Clone.md).
 
+#### Duplicatetemplate
+
+```luau
+local templates = World:FindFirstChild("Templates")
+local arena = World:FindFirstChild("Arena")
+if templates == nil or arena == nil then
+	return
+end
+
+local crateTemplate = templates:FindFirstChild("Crate")
+if crateTemplate ~= nil then
+	local crate = crateTemplate:Clone(arena)
+	crate.Name = "Crate_01"
+end
+```
+
 ### Destroy(time?)
 
 #### Parameters
@@ -99,6 +134,16 @@ generated: true
 **Returns:** `nil`
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/NetworkedObject/methods?filename=Destroy.md).
+
+#### Delayedcleanup
+
+```luau
+local effect = World:FindFirstChild("TemporaryEffect", true)
+if effect ~= nil then
+	-- Destroy the object after three seconds.
+	effect:Destroy(3)
+end
+```
 
 ### Delete(time?)
 
@@ -180,3 +225,15 @@ generated: true
 **Type:** `BVSignal`
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/NetworkedObject/events?filename=Destroying.md).
+
+#### Releasereferences
+
+```luau
+local trackedObject = World:FindFirstChild("TrackedObject", true)
+if trackedObject ~= nil then
+	trackedObject.Destroying:Connect(function()
+		print("Tracked object is being destroyed")
+		trackedObject = nil
+	end)
+end
+```

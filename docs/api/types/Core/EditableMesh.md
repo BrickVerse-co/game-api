@@ -711,6 +711,51 @@ generated: true
 
 > Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/EditableMesh/methods?filename=ExtrudeFaces.md).
 
+### InsetFaces(faceIds, amount)
+
+#### Parameters
+
+- `faceIds`: `{ number }`
+- `amount`: `number`
+
+**Returns:** `{ number }`
+
+> Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/EditableMesh/methods?filename=InsetFaces.md).
+
+### BevelFaces(faceIds, inset, depth?)
+
+#### Parameters
+
+- `faceIds`: `{ number }`
+- `inset`: `number`
+- `depth`: `number` — optional; default: `0`
+
+**Returns:** `{ number }`
+
+> Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/EditableMesh/methods?filename=BevelFaces.md).
+
+### SeparateFaces(faceIds, removeFromSource?)
+
+#### Parameters
+
+- `faceIds`: `{ number }`
+- `removeFromSource`: `boolean` — optional; default: `False`
+
+**Returns:** `EditableMesh`
+
+> Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/EditableMesh/methods?filename=SeparateFaces.md).
+
+### AppendMesh(source, transform?)
+
+#### Parameters
+
+- `source`: `EditableMesh`
+- `transform`: `Transform3D` — optional
+
+**Returns:** `{ number }`
+
+> Documentation for this API is incomplete. [Add documentation](https://github.com/BrickVerse-co/game-api/new/main/docs/contributions/classes/EditableMesh/methods?filename=AppendMesh.md).
+
 ### MergeVertices(mergeTolerance)
 
 #### Parameters
