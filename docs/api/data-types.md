@@ -57,6 +57,14 @@ local position = Vector3.New(0, 5, 0)
 local direction = Vector3.Forward
 ```
 
+### BVector2
+
+The internal C# scripting proxy that implements Luau `Vector2`. Engine and managed-language contributors may encounter this name; ordinary Luau scripts should use `Vector2`.
+
+### BVector3
+
+The internal C# scripting proxy that implements Luau `Vector3`. Engine and managed-language contributors may encounter this name; ordinary Luau scripts should use `Vector3`.
+
 ### Quaternion
 
 A rotation value suited to composing and interpolating 3D orientation without Euler-angle gimbal lock.
